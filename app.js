@@ -37,7 +37,7 @@ const displayMeals = meals => {
                 <div class="card h-100 border-light">
                 <img src="${meal.strMealThumb}" class="card-img-top" alt="...">
                     <div class="card-body">
-                      <h5 class="card-title">${meal.strMeal}</h5>
+                      <h5 class="card-title meal-name">${meal.strMeal}</h5>
                     </div>
                 </div>
             </div>

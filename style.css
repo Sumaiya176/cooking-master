@@ -57,3 +57,7 @@ li {
 .box {
     height: 390px;
 }
+
+.meal-name {
+    text-align: center;
+}
