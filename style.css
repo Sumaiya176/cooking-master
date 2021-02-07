@@ -19,7 +19,7 @@ body{
 }
 
 #search-bar{
-    margin: 50px 400px;
+    margin: 50px 500px;
 }
 #meals-section{
     display: grid;
@@ -34,7 +34,7 @@ body{
 }
 #details{
     height: 510px;
-    margin: 60px 400px;
+    margin: 60px 450px;
     display: none;
 }
 .meal-detail {
@@ -56,5 +56,5 @@ li{
     font-size: small;
 }
 .box {
-    height: 355px;
+    height: 380px;
 }
