@@ -1,3 +1,4 @@
+// adding event handler & first api calling
 const search = document.getElementById("search");
 search.addEventListener("click", function () {
     const inputLetter = document.getElementById("input-letter").value;
@@ -8,20 +9,20 @@ search.addEventListener("click", function () {
         .then(res => res.json())
         .then(data => displayMeals(data))
 
-        .catch(err =>
-             {
+        .catch(err => {
             const details = document.getElementById("details");
             details.style.display = "block";
             details.innerHTML = `
                 OOPs! items are not available now <img class="wink" src="images/frown.svg">.
                 Try with another one...
             `
-           
+
         })
-        const details = document.getElementById("details");
-            details.style.display = "none";
+    const details = document.getElementById("details");
+    details.style.display = "none";
 })
 
+// arrow function for showing searched meals
 const displayMeals = meals => {
     const mealsSection = document.getElementById("meals-section");
     mealsSection.style.float = "left";
@@ -47,12 +48,16 @@ const displayMeals = meals => {
     document.getElementById("meals-section").value = "";
 }
 
+// This arrow function is for showing single meal details &
+// second time api calling
 const mealDetail = mealName => {
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`;
     fetch(url)
-    .then( res => res.json())
-    .then( data => singleMealInfo(data.meals[0]));
+        .then(res => res.json())
+        .then(data => singleMealInfo(data.meals[0]));
 }
+
+// Another arrow function is for showing ingredients
 const singleMealInfo = singleMeal => {
     const details = document.getElementById("details");
     details.style.display = "block";
@@ -78,11 +83,6 @@ const singleMealInfo = singleMeal => {
         </div>
     `
 }
-
-// const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=beef`;
-//     fetch(url)
-//     .then( res => res.json())
-//     .then( data => singleMealInfo(data.meals[0]));
 
 
 
