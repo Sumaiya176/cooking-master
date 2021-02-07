@@ -2,19 +2,24 @@ const search = document.getElementById("search");
 search.addEventListener("click", function () {
     const inputLetter = document.getElementById("input-letter").value;
     document.getElementById("input-letter").value = "";
+    document.getElementById("meals-section").innerHTML = "";
+    document.getElementById("details").innerText = "";
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${inputLetter}`)
         .then(res => res.json())
         .then(data => displayMeals(data))
 
-        .catch(err => {
+        .catch(err =>
+             {
             const details = document.getElementById("details");
             details.style.display = "block";
             details.innerHTML = `
                 OOPs! items are not available now <img class="wink" src="images/frown.svg">.
-                Try with another letter..
+                Try with another one...
             `
+           
         })
-        
+        const details = document.getElementById("details");
+            details.style.display = "none";
 })
 
 const displayMeals = meals => {
@@ -27,8 +32,8 @@ const displayMeals = meals => {
         sectionDiv.className = "section-div";
 
         const allMeals = `
-           <div onclick="mealDetail('${meal.strMeal}')" class="col">
-                <div class="card h-100">
+           <div onclick="mealDetail('${meal.strMeal}')" class="col box border-light">
+                <div class="card h-100 border-light">
                 <img src="${meal.strMealThumb}" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">${meal.strMeal}</h5>
@@ -37,7 +42,6 @@ const displayMeals = meals => {
             </div>
            `
         sectionDiv.innerHTML = allMeals;
-        // document.getElementById("meals-section").value = "";
         mealsSection.appendChild(sectionDiv);
     });
     document.getElementById("meals-section").value = "";
@@ -74,6 +78,11 @@ const singleMealInfo = singleMeal => {
         </div>
     `
 }
+
+// const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=beef`;
+//     fetch(url)
+//     .then( res => res.json())
+//     .then( data => singleMealInfo(data.meals[0]));
 
 
 
